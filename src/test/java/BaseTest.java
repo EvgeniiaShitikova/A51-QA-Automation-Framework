@@ -31,7 +31,6 @@ public class BaseTest {
         //Added ChromeOptions argument below to fix websocket error
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
-
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         url = BaseURL;
@@ -56,7 +55,6 @@ public class BaseTest {
         passwordField.sendKeys(password);
     }
     public void clickSubmit() {
-
         WebElement submit = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[type='submit']")));
         submit.click();
     }

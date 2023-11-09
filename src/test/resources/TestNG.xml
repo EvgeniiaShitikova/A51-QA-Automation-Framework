@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="TestNG">
-
+  
     <parameter name="BaseURL" value="http://qa.koel.app/"/>
     <test name="Example Test" preserve-order="false">
         <classes>
@@ -10,7 +10,7 @@
 <!--            <class name="BaseTest"/>-->
 <!--            <class name="Homework16"/>-->
 <!--            <class name="Homework18"/>-->
-            <class name="Homework20"/>
+                <class name="Homework20"/>
         </classes>
     </test>
 </suite>
