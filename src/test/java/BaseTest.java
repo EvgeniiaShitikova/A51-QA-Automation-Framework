@@ -23,18 +23,22 @@ public class BaseTest {
     public String url = "https://qa.koel.app/";
     public WebDriverWait wait;
 
-    Actions actions;
 
+    Actions actions;
     @BeforeMethod
     @Parameters({"BaseURL"})
     public void launchBrowser(String BaseURL){
         //Added ChromeOptions argument below to fix websocket error
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
+
         driver = new ChromeDriver(options);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         actions = new Actions(driver);
         driver.manage().window().maximize();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        url = BaseURL;
         navigateToPage();
     }
     @AfterMethod
@@ -43,7 +47,6 @@ public class BaseTest {
     }
     public void navigateToPage() {
         driver.get(url);
-    }
 
     public void provideEmail(String email) {
         WebElement emailField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='email']")));
@@ -51,6 +54,7 @@ public class BaseTest {
         emailField.sendKeys(email);
     }
     public void providePassword(String password) {
+
         WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='password']")));
         passwordField.clear();
         passwordField.sendKeys(password);
