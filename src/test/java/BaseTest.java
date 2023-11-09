@@ -14,6 +14,8 @@ import org.testng.annotations.Parameters;
 import java.time.Duration;
 
 public class BaseTest {
+    public WebDriver driver = null;
+    public String url = "https://qa.koel.app/";
 
     @BeforeSuite
     static void setupClass() {
@@ -30,7 +32,6 @@ public class BaseTest {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
 
-        driver = new ChromeDriver(options);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         url = BaseURL;
@@ -42,18 +43,20 @@ public class BaseTest {
     }
     public void navigateToPage() {
         driver.get(url);
-    }
+
     public void provideEmail(String email) {
         WebElement emailField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='email']")));
         emailField.clear();
         emailField.sendKeys(email);
     }
     public void providePassword(String password) {
+
         WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='password']")));
         passwordField.clear();
         passwordField.sendKeys(password);
     }
     public void clickSubmit() {
+
         WebElement submit = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[type='submit']")));
         submit.click();
     }
