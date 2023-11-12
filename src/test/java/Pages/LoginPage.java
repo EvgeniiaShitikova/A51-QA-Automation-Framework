@@ -10,11 +10,11 @@ public class LoginPage extends BasePage{
     }
 
     //Locators
-    By emailField = By.cssSelector("input[type='email']");
+    private By emailField = By.cssSelector("input[type='email']");
 
-    By passwordField = By.cssSelector("input[type='password']");
+    private By passwordField = By.cssSelector("input[type='password']");
 
-    By submitBtn = By.cssSelector("button[type='submit']");
+    private By submitBtn = By.cssSelector("button[type='submit']");
 
     public void provideEmail(String email){
         findElement(emailField).sendKeys(email);

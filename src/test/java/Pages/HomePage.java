@@ -12,7 +12,7 @@ public class HomePage extends BasePage{
 
     // Locators
 
-    By userAvatarIcon = By.cssSelector("img.avatar");
+    private By userAvatarIcon = By.cssSelector("img.avatar");
 
     //Helpers
 
