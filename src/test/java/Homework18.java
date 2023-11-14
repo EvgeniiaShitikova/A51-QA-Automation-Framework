@@ -2,10 +2,13 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import pages.HomePage;
+import pages.LoginPage;
 
 public class Homework18 extends BaseTest{
     @Test
     public void playSong(){
+
         navigateToPage();
         provideEmail("evgeniia.shitikova@testpro.io");
         providePassword("TridY6F2");
