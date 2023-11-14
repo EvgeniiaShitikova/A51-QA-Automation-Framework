@@ -14,10 +14,20 @@ public class LoginTests extends BaseTest {
     public void loginValidEmailPasswordTest(){
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
-
         loginPage.provideEmail("evgeniia.shitikova@testpro.io");
         loginPage.providePassword("TridY6F2");
         loginPage.clickSubmit();
+        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+    }
+
+    @Test
+    public void loginValidEmailPasswordTestByPageFactory(){
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+
+        loginPage.provideEmailToLogin("evgeniia.shitikova@testpro.io")
+                .providePasswordToLogin("TridY6F2")
+                .clickSubmitBtnLogin();
 
         Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
     }
