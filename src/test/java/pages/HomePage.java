@@ -19,7 +19,7 @@ public class HomePage extends BasePage{
     public WebElement getUserAvatar(){ return findElement(userAvatarIcon);
     }
 
-    public WebElement hoverPlay() throws InterruptedException{
+    public WebElement hoverPlay() {
         WebElement play = driver.findElement((By.cssSelector("[data-testid='play-btn']")));
         actions.moveToElement(play).perform();
         return wait.until(ExpectedConditions.visibilityOf(play));

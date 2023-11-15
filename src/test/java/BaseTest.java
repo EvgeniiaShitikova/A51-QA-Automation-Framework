@@ -16,10 +16,10 @@ import java.time.Duration;
 
 public class BaseTest {
 
-    public static WebDriver driver = null;
-    public static String url = null;
-    public static WebDriverWait wait = null;
-    public static Actions actions = null;
+    protected WebDriver driver = null;
+    protected String url = null;
+    protected WebDriverWait wait = null;
+    protected Actions actions = null;
 
     @BeforeSuite
     static void setupClass() {
@@ -32,7 +32,6 @@ public class BaseTest {
         //Added ChromeOptions argument below to fix websocket error
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
-
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
@@ -50,17 +49,17 @@ public class BaseTest {
     public void navigateToPage() {
         driver.get(url);
     }
-    public void provideEmail(String email) {
+    protected void provideEmail(String email) {
         WebElement emailField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='email']")));
         emailField.clear();
         emailField.sendKeys(email);
     }
-    public void providePassword(String password) {
+    protected void providePassword(String password) {
         WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type='password']")));
         passwordField.clear();
         passwordField.sendKeys(password);
     }
-    public void clickSubmit() {
+    protected void clickSubmit() {
         WebElement submit = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("button[type='submit']")));
         submit.click();
     }
