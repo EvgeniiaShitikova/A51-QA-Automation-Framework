@@ -1,5 +1,5 @@
-import Pages.HomePage;
-import Pages.LoginPage;
+import pages.HomePage;
+import pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -11,17 +11,26 @@ import java.time.Duration;
 public class LoginTests extends BaseTest {
 
     @Test
-   public void loginValidEmailPasswordTest(){
-       LoginPage loginPage = new LoginPage(driver);
-       HomePage homePage = new HomePage(driver);
+    public void loginValidEmailPasswordTest(){
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+        loginPage.provideEmail("evgeniia.shitikova@testpro.io");
+        loginPage.providePassword("TridY6F2");
+        loginPage.clickSubmit();
+        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+    }
 
-       loginPage.provideEmail("evgeniia.shitikova@testpro.io");
-       loginPage.providePassword("TridY6F2");
-       loginPage.clickSubmit();
+    @Test
+    public void loginValidEmailPasswordTestByPageFactory(){
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
 
-       Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
-   }
+        loginPage.provideEmailToLogin("evgeniia.shitikova@testpro.io")
+                .providePasswordToLogin("TridY6F2")
+                .clickSubmitBtnLogin();
 
+        Assert.assertTrue(homePage.getUserAvatar().isDisplayed());
+    }
 
     @Test
     public void loginEmptyEmailPassword() {
@@ -38,4 +47,6 @@ public class LoginTests extends BaseTest {
         Assert.assertEquals(driver.getCurrentUrl(), url);
         driver.quit();
     }
+
+
 }
