@@ -3,7 +3,6 @@
 
 <suite name="TestNG">
 
-
     <parameter name="BaseURL" value="http://qa.koel.app/"/>
     <test name="Example Test" preserve-order="false">
         <classes>
