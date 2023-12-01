@@ -18,7 +18,7 @@ public class LoginPage extends BasePage {
     private WebElement passwordField;
     // Represents the password input field on the login form.
 
-    @FindBy(css = "a#hel")
+    @FindBy(xpath = "//a[@href='registration']")
     private WebElement registrationLink;
     // Represents the registration link.
 
