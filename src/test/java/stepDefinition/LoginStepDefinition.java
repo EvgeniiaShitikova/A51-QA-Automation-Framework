@@ -43,29 +43,25 @@ public class LoginStepDefinition {
     }
 
     @When("I enter email {string}")
-    public void iEnterEmail(String email)  throws InterruptedException{
+    public void iEnterEmail(String email){
         LoginPage loginPage = new LoginPage(driver);
-        Thread.sleep(2000);
         loginPage.provideEmail(email);
     }
 
     @And("I enter password {string}")
-    public void iEnterPassword(String password)  throws InterruptedException{
+    public void iEnterPassword(String password){
         LoginPage loginPage = new LoginPage(driver);
-        Thread.sleep(2000);
         loginPage.providePassword(password);
     }
 
     @And("I submit")
-    public void iSubmit()  throws InterruptedException{
+    public void iSubmit(){
         LoginPage loginPage = new LoginPage(driver);
-        Thread.sleep(2000);
         loginPage.clickSubmitBtn();
     }
 
     @Then("I should get logged in")
-    public void iShouldGetLoggedIn()  throws InterruptedException{
-        Thread.sleep(2000);
+    public void iShouldGetLoggedIn(){
         Assert.assertTrue(wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img.avatar"))).isDisplayed());
     }
 }

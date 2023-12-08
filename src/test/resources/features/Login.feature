@@ -1,6 +1,5 @@
 Feature: Login feature
 
-  #This wont get executed/ This is a comment.
   Scenario: Login Success
     Given I open Login Page
     When I enter email "evgeniia.shitikova@testpro.io"

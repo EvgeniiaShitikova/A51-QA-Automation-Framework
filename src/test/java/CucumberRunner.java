@@ -6,7 +6,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 
 @CucumberOptions (
-        features = {"src/test/resources/features/Login.feature"}
+        features = {"src/test/resources/features"},
+        publish = true
 )
 public class CucumberRunner extends AbstractTestNGCucumberTests {
 
@@ -17,7 +18,7 @@ public class CucumberRunner extends AbstractTestNGCucumberTests {
         testNGCucumberRunner = new TestNGCucumberRunner(this.getClass());
     }
 
-    @DataProvider
+    @DataProvider(parallel = true)
     public Object[][] features(){
         return testNGCucumberRunner.provideScenarios();
     }
